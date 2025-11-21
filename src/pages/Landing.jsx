@@ -33,7 +33,7 @@ export default function Landing(){
                                             Solana Wallet Manager
                                         </h1>
                                         <div className="flex gap-4">
-                                            <Link to="/LaunchPad"
+                                            <Link to="/launch-a-token"
                                              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold text-base sm:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl min-h-[48px] cursor-pointer"
                                             >Launch a token
                                             </Link>
