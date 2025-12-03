@@ -10,7 +10,7 @@ function App(){
     <Routes>
         
             <Route path='/' element={<Landing />} />
-            <Route path='/launch-a-token' element={<TokenLaunchPad />} />
+            <Route path='/sol/launch-a-token' element={<TokenLaunchPad />} />
             <Route path='/solana' element={<Solana />} />
             <Route path='/eth' element={<ETH />} />
         

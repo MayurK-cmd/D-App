@@ -33,9 +33,13 @@ export default function Solana(){
                                             Solana Wallet Manager
                                         </h1>
                                         <div className="flex gap-4">
-                                            <Link to="/launch-a-token"
+                                            <Link to="/sol/launch-a-token"
                                              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold text-base sm:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl min-h-[48px] cursor-pointer"
                                             >Launch a token
+                                            </Link>
+                                             <Link to="/"
+                                             className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold text-base sm:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl min-h-[48px] cursor-pointer"
+                                            >go back
                                             </Link>
                                             <WalletMultiButton className="!bg-white !text-black hover:!bg-gray-200 !font-semibold !rounded-lg !px-6 !py-3 !transition-all !duration-200 !border-2 !border-white" />
                                             <WalletDisconnectButton className="!bg-gray-800 !text-white hover:!bg-gray-700 !font-semibold !rounded-lg !px-6 !py-3 !transition-all !duration-200 !border-2 !border-gray-600" />
