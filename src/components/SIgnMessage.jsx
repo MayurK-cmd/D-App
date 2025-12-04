@@ -1,47 +1,3 @@
-// import { ed25519 } from "@noble/curves/ed25519.js";
-// import { useWallet} from "@solana/wallet-adapter-react";
-// import { PublicKey } from "@solana/web3.js";
-// import bs58 from 'bs58';
-// import React from "react";
-
-// export function SignMessage() {
-//     const {publicKey, SignMessage} = useWallet();
-
-//     async function onClick(){
-//         if(!PublicKey) throw new Error('your Wallet is not connected!');
-//         if(!SignMessage) throw new Error('signing message is not allowed');
-        
-//         const message=document.getElementById("message").value;
-//         const encodedMessage = new TextEncoder().encode(message);
-//         const signature = await SignMessage(encodedMessage);
-
-//         if (!ed25519.verify(signature, encodedMessage, publicKey.toBytes())) throw new Error('Message signature invalid!');
-//         alert('success', `Message signature: ${bs58.encode(signature)}`);
-//     };
-
-//     return(
-//         <div className="bg-black border-2 border-white p-6 rounded-lg shadow-lg">
-//             <h2 className="text-2xl font-bold mb-4 text-white">Sign Message</h2>
-//             <div className="space-y-4">
-//                 <input 
-//                     id="message" 
-//                     type="text" 
-//                     placeholder="Type a message to sign"
-//                     className="w-full px-4 py-3 border-2 border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-900 text-white placeholder-gray-500"
-//                 />
-//                 <button 
-//                     onClick={onClick}
-//                     className="w-full bg-white text-black font-semibold py-3 px-6 rounded-md hover:bg-gray-200 transition-colors duration-200 active:bg-gray-300 border-2 border-white"
-//                 >
-//                     Sign Message
-//                 </button>
-//             </div>
-//         </div>
-//     );
-// };
-
-
-
 import React, { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react"; // Handles wallet connection
 import bs58 from 'bs58';
@@ -95,27 +51,47 @@ export function SignMessage() {
   }
 
   return (
-    <div className="bg-black border-2 border-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-white">Sign Message</h2>
-      <div className="space-y-4">
-        <input
-          type="text"
-          placeholder="Type a message to sign"
-          className="w-full px-4 py-3 border-2 border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-900 text-white placeholder-gray-500"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)} // Update state on input change
-        />
+    <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 bg-emerald-500/10 rounded-lg">
+             <span className="text-emerald-400 text-xl">✍️</span>
+        </div>
+        <h2 className="text-2xl font-bold text-white">Sign Message</h2>
+      </div>
+
+      <div className="space-y-5">
+        <div>
+            <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Message to Sign</label>
+            <input
+            type="text"
+            placeholder="Type a message..."
+            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)} // Update state on input change
+            />
+        </div>
+
         <button
           onClick={onClick}
-          className="w-full bg-white text-black font-semibold py-3 px-6 rounded-md hover:bg-gray-200 transition-colors duration-200 active:bg-gray-300 border-2 border-white"
+          disabled={!connected}
+          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-emerald-900/20 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Sign Message
         </button>
 
-        {signature && <div className="mt-4 text-white">Signature: {signature}</div>}
+        {signature && (
+            <div className="mt-6 bg-slate-950 border border-slate-800 rounded-xl p-4 animate-fade-in">
+                <p className="text-xs text-slate-500 uppercase font-bold mb-2">Generated Signature:</p>
+                <div className="font-mono text-xs text-emerald-400 break-all leading-relaxed">
+                    {signature}
+                </div>
+            </div>
+        )}
+        
         {verified !== null && (
-          <div className="mt-4 text-white">
-            Verified: {verified ? "Yes" : "No"}
+          <div className={`mt-2 flex items-center gap-2 text-sm font-medium ${verified ? 'text-green-400' : 'text-red-400'}`}>
+            <span>{verified ? "✓" : "✗"}</span>
+            <span>Signature Verified: {verified ? "Yes" : "No"}</span>
           </div>
         )}
       </div>

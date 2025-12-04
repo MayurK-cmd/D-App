@@ -20,26 +20,40 @@ export function SendTokens(){
     }
 
     return(
-        <div className="bg-gray-900 border-2 border-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-white">Send SOL</h2>
+        <div className="h-full bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl transition-all group-hover:bg-purple-500/20"></div>
+
+            <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
+                <span className="text-purple-400">💸</span> Send SOL
+            </h2>
+            
             <div className="space-y-4">
-                <input 
-                    id="to" 
-                    type="text" 
-                    placeholder="Recipient Address"
-                    className="w-full px-4 py-3 border-2 border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-gray-800 text-white placeholder-gray-400"
-                />
-                <input 
-                    id="amount" 
-                    type="text" 
-                    placeholder="Amount (SOL)"
-                    className="w-full px-4 py-3 border-2 border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-gray-800 text-white placeholder-gray-400"
-                />
+                <div>
+                    <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Recipient Address</label>
+                    <input 
+                        id="to" 
+                        type="text" 
+                        placeholder="Wallet Address"
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    />
+                </div>
+                
+                <div>
+                    <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Amount</label>
+                    <input 
+                        id="amount" 
+                        type="text" 
+                        placeholder="Amount (SOL)"
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    />
+                </div>
+
                 <button 
                     onClick={sendTokens}
-                    className="w-full bg-white text-black font-semibold py-3 px-6 rounded-md hover:bg-gray-200 transition-colors duration-200 active:bg-gray-300"
+                    disabled={!wallet.connected}
+                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
                 >
-                    Send Tokens
+                    Send Transaction
                 </button>
             </div>
         </div>

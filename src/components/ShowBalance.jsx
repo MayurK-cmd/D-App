@@ -14,17 +14,34 @@ export function ShowBalance(){
 
     getBalance();
 
-    return <div className="bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-3 text-black">Wallet Balance</h2>
-        <div className="bg-white border border-gray-300 rounded-md p-4">
-            <p className="text-gray-600 text-sm mb-2">SOL Balance</p>
-            <div 
-                id="balance" 
-                className="text-4xl font-bold text-black"
-            >
-                0.00
+    return (
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+             {/* Decorative Background */}
+             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+
+            <div className="relative z-10 flex justify-between items-start">
+                <div>
+                    <h2 className="text-lg font-medium text-slate-400 mb-1">Total Balance</h2>
+                    <div className="flex items-baseline gap-2">
+                        <div 
+                            id="balance" 
+                            className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 tracking-tight"
+                        >
+                            0.00
+                        </div>
+                        <span className="text-xl font-bold text-slate-500">SOL</span>
+                    </div>
+                </div>
+                
+                <div className="hidden sm:block p-3 bg-slate-950/50 rounded-xl border border-slate-700/50">
+                     <span className="text-2xl">💰</span>
+                </div>
             </div>
-            <p className="text-gray-500 text-xs mt-2">SOL</p>
+            
+            <div className="mt-6 flex items-center gap-2 text-xs text-slate-500">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                Live on Devnet
+            </div>
         </div>
-    </div>
+    )
 }

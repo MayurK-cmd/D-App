@@ -1,0 +1,8 @@
+{
+  "name": "My Token",
+  "symbol": "MTK",
+  "description": "A utility token for my app.",
+  "properties": {
+    "files": []
+  }
+}
