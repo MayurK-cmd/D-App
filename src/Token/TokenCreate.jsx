@@ -282,11 +282,8 @@ export function TokenCreation({ onTokenCreate }) {
           <p className="text-sm text-slate-400">Create your SPL Token with one click</p>
         </div>
         
-        {/* Warning Box */}
-        <div className="bg-yellow-900/20 border-l-4 border-yellow-500 p-4 rounded text-xs text-yellow-200">
-          <strong className="block mb-1 text-yellow-400">⚠️ Dependency Check</strong>
-          Ensure you are using <code>@metaplex-foundation/mpl-token-metadata@2.13.0</code>
-        </div>
+        
+        
 
         {/* Input Fields */}
         <div className="space-y-4 z-10 relative">
